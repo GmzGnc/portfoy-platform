@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design Tokens ──────────────────────────────────────────────────────── */
+:root {
+  /* Surfaces */
+  --surface-0: 0 0% 100%;
+  --surface-1: 210 17% 98%;
+  --surface-2: 210 15% 96%;
+  --surface-3: 210 13% 93%;
+
+  /* Ink */
+  --ink-primary:   220 15% 10%;
+  --ink-secondary: 220 10% 35%;
+  --ink-tertiary:  220 8%  58%;
+  --ink-brand:     158 68% 37%;
+
+  /* Borders */
+  --border-subtle:  220 13% 91%;
+  --border-default: 220 11% 85%;
+  --border-strong:  220 9%  72%;
+
+  /* Brand */
+  --brand: 158 68% 37%;
+}
+
+/* ── Base ──────────────────────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 14px;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface-2 text-ink-primary;
+    font-family: 'DM Sans', 'Geist', system-ui, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight text-ink-primary;
+    line-height: 1.2;
+  }
+
+  ::selection {
+    background: #9FE1CB;
+    color: #04342C;
+  }
+
+  :focus-visible {
+    outline: 2px solid #1D9E75;
+    outline-offset: 2px;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: hsl(var(--border-default)); border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: hsl(var(--border-strong)); }
+}
+
+/* ── Components ──────────────────────────────────────────────────────────── */
+@layer components {
+
+  /* Card */
+  .card {
+    @apply bg-surface-0 border border-border rounded-lg shadow-card;
+  }
+  .card-hover {
+    @apply hover:shadow-card-hover hover:border-border-strong transition-all duration-150;
+  }
+
+  /* Metric card */
+  .metric-card {
+    @apply bg-surface-1 rounded-md p-4;
+  }
+
+  /* Badge / Pill */
+  .badge {
+    @apply inline-flex items-center text-[11px] font-medium px-2 py-0.5 rounded-full;
+  }
+  .badge-brand   { @apply bg-brand-50 text-brand-600; }
+  .badge-amber   { @apply bg-amber-50 text-amber-700; }
+  .badge-blue    { @apply bg-blue-50 text-blue-700; }
+  .badge-red     { @apply bg-red-50 text-red-700; }
+  .badge-purple  { @apply bg-purple-50 text-purple-700; }
+  .badge-gray    { @apply bg-surface-2 text-ink-secondary; }
+
+  /* Button */
+  .btn {
+    @apply inline-flex items-center gap-2 text-sm font-medium rounded-md px-3 py-2
+           transition-all duration-150 cursor-pointer select-none;
+  }
+  .btn-primary {
+    @apply btn bg-brand-400 text-white hover:bg-brand-600 active:scale-[0.98];
+  }
+  .btn-secondary {
+    @apply btn bg-surface-0 text-ink-primary border border-border
+           hover:bg-surface-1 hover:border-border-strong active:scale-[0.98];
+  }
+  .btn-ghost {
+    @apply btn text-ink-secondary hover:bg-surface-1 hover:text-ink-primary;
+  }
+  .btn-danger {
+    @apply btn bg-red-50 text-red-700 border border-red-200 hover:bg-red-100;
+  }
+
+  /* Input */
+  .input {
+    @apply w-full text-sm bg-surface-0 border border-border rounded-md px-3 py-2
+           text-ink-primary placeholder:text-ink-tertiary
+           focus:outline-none focus:ring-2 focus:ring-brand-200 focus:border-brand-400
+           transition-colors duration-150;
+  }
+
+  /* Sidebar item */
+  .sidebar-item {
+    @apply flex items-center gap-2.5 px-3 py-2 rounded-md text-[13px] text-ink-secondary
+           cursor-pointer transition-all duration-100 border border-transparent
+           hover:bg-surface-1 hover:text-ink-primary;
+  }
+  .sidebar-item.active {
+    @apply bg-brand-50 text-brand-600 font-medium;
+  }
+
+  /* Stage tab */
+  .stage-tab {
+    @apply flex items-center gap-2 px-4 py-3 text-[12px] text-ink-tertiary
+           border-b-2 border-transparent cursor-pointer whitespace-nowrap
+           transition-all duration-150 hover:text-ink-secondary;
+  }
+  .stage-tab.active {
+    @apply text-brand-600 border-brand-400 font-medium;
+  }
+
+  /* Score bar */
+  .score-bar {
+    @apply flex-1 h-1.5 bg-surface-2 rounded-full overflow-hidden;
+  }
+  .score-bar-fill {
+    @apply h-full rounded-full transition-all duration-500;
+  }
+
+  /* Molecule card */
+  .mol-card {
+    @apply card card-hover p-4 cursor-pointer;
+  }
+  .mol-card.selected {
+    @apply border-brand-400 bg-brand-50/40;
+  }
+
+  /* Alert dot */
+  .alert-dot {
+    @apply w-2 h-2 rounded-full flex-shrink-0 mt-1;
+  }
+
+  /* Data source badge */
+  .source-dot {
+    @apply inline-block w-1.5 h-1.5 rounded-full mr-1.5;
+  }
+}
+
+/* ── Utilities ───────────────────────────────────────────────────────────── */
+@layer utilities {
+  .text-display { font-family: 'DM Serif Display', Georgia, serif; }
+  .animate-in { animation: slideUp 0.2s cubic-bezier(.22,1,.36,1) both; }
+  .stagger-1 { animation-delay: 0.05s; }
+  .stagger-2 { animation-delay: 0.1s; }
+  .stagger-3 { animation-delay: 0.15s; }
+  .stagger-4 { animation-delay: 0.2s; }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .truncate-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* ── Recharts overrides ──────────────────────────────────────────────────── */
+.recharts-cartesian-axis-tick-value {
+  font-size: 11px;
+  fill: hsl(var(--ink-tertiary));
+}
+.recharts-tooltip-wrapper {
+  font-size: 12px;
+}
+.recharts-legend-item-text {
+  font-size: 12px;
+}
