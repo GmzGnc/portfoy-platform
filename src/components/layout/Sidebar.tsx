@@ -4,7 +4,7 @@ import { useStore } from '@/store'
 import { cn } from '@/lib/utils'
 import {
   BarChart2, Globe, ShieldCheck, Star, AlertTriangle,
-  Settings, CheckSquare, Database, Upload, Layers, Scale
+  Settings, CheckSquare, Database, Upload, Layers, Scale, TrendingUp
 } from 'lucide-react'
 
 interface SidebarSection {
@@ -55,6 +55,7 @@ export default function Sidebar({
         { id: 'candidates', label: 'Aday Moleküller', icon: <Star className="w-3.5 h-3.5" />, badge: highPriority > 0 ? highPriority : undefined, badgeVariant: 'amber', page: 'candidates' },
         { id: 'criteria', label: 'Kriter & Ağırlık', icon: <Layers className="w-3.5 h-3.5" />, page: 'criteria' },
         { id: 'tasks', label: 'Görev Takibi', icon: <CheckSquare className="w-3.5 h-3.5" />, badge: openTasks > 0 ? openTasks : undefined, badgeVariant: 'amber', page: 'tasks' },
+        { id: 'financial', label: 'P&L Finansal Model', icon: <TrendingUp className="w-3.5 h-3.5" />, badge: 'Yeni', badgeVariant: 'amber', page: 'financial' },
       ],
     },
     {
