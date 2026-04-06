@@ -4,7 +4,7 @@ import { useStore } from '@/store'
 import { cn } from '@/lib/utils'
 import {
   BarChart2, Globe, ShieldCheck, Star, AlertTriangle,
-  Settings, CheckSquare, Database, Upload, Layers
+  Settings, CheckSquare, Database, Upload, Layers, Scale
 } from 'lucide-react'
 
 interface SidebarSection {
@@ -61,6 +61,7 @@ export default function Sidebar({
       label: 'Regülasyon',
       items: [
         { id: 'titck', label: 'TİTCK Ruhsat', icon: <ShieldCheck className="w-3.5 h-3.5" />, badge: titckProducts.length > 0 ? titckProducts.length.toLocaleString('tr-TR') : 'Yükle', badgeVariant: titckProducts.length > 0 ? 'gray' : 'amber', page: 'titck' },
+        { id: 'patent', label: 'Patent Takibi', icon: <Scale className="w-3.5 h-3.5" />, badge: 'GLP-1', badgeVariant: 'brand', page: 'patent' },
       ],
     },
     {

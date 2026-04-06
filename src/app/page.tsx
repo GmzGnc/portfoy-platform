@@ -12,6 +12,7 @@ import TitckPage from '@/components/modules/TitckPage'
 import AlertsPage from '@/components/modules/AlertsPage'
 import SourcesPage from '@/components/modules/SourcesPage'
 import UploadPage from '@/components/modules/UploadPage'
+import PatentPage from '@/components/modules/PatentPage'
 
 const PAGE_MAP: Record<string, React.ReactNode> = {
   'iqvia-tr': <IqviaTrPage />,
@@ -20,6 +21,7 @@ const PAGE_MAP: Record<string, React.ReactNode> = {
   criteria: <CriteriaPage />,
   tasks: <TasksPage />,
   titck: <TitckPage />,
+  patent: <PatentPage />,
   alerts: <AlertsPage />,
   sources: <SourcesPage />,
 }
